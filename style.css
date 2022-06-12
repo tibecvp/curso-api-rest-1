@@ -44,7 +44,11 @@ body a {
     width: 50%;
     max-width: 600px;
     text-decoration: none;
-    font-size: 1.2rem;
-    color: crimson;
+    font-size: 1.4rem;
+    color: #c07c8a;
     text-align: end;
+}
+
+body a span {
+    font-style: italic;
 }
