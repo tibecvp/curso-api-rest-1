@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    gap: 24px;
+}
+
+body h1 {
+    font-size: 3.2rem;
+    color: #20202c;
+}
+
+body img {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+body button {
+    padding: 16px 36px;
+    border: 0;
+    background-color: slateblue;
+    color: whitesmoke;
+    font-size: 1.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
