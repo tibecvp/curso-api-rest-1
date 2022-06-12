@@ -29,11 +29,22 @@ body img {
 }
 
 body button {
+    width: 50%;
+    max-width: 600px;
     padding: 16px 36px;
     border: 0;
-    background-color: slateblue;
+    background-color: crimson;
     color: whitesmoke;
-    font-size: 1.6rem;
+    font-size: 2rem;
     border-radius: 6px;
     cursor: pointer;
+}
+
+body a {
+    width: 50%;
+    max-width: 600px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: crimson;
+    text-align: end;
 }
