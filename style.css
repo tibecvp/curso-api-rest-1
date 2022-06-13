@@ -22,10 +22,17 @@ body h1 {
     color: #20202c;
 }
 
+body section {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
 body img {
-    width: 50%;
-    max-width: 600px;
+    width: 30%;
+    aspect-ratio: 16 / 9;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 body button {
