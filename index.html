@@ -6,26 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Mi Perro Aleatorio</title>
+    <title>Mis Perros Aleatorios</title>
 </head>
 <body>
-    <h1>Mi Perro Aleatorio</h1>
-
-    <section>
-        <img id="img1" alt="Foto de perro aleatorio">
-        <img id="img2" alt="Foto de perro aleatorio">
-        <img id="img3" alt="Foto de perro aleatorio">
-    </section>
-
-
-    <button onclick="reload()">Cambiar a mi perro</button>
-
-    <a href="https://github.com/tibecvp" target="_blank">
-        <span>
-            Developed by 
-        </span>
-        <b>tibecvp</b>
-    </a>
+    <header>
+        <h1>My Doggies App</h1>
+    </header>
+    <main>
+        <div id="error-container" class="error-container">
+            <span id="error"></span>
+            <button class="error-btn" onclick="closeError()">X</button>
+        </div>
+        <section>
+            <h2>Mis Perros Aleatorios</h2>
+            <div class="random-dogs">
+                <article>
+                    <img id="img1" alt="Foto de perro aleatorio">
+                    <button id="random-dogs-btn1" class="btn-favorite secondary-btn">Favorite</button>
+                </article>
+                <article>
+                    <img id="img2" alt="Foto de perro aleatorio">
+                    <button id="random-dogs-btn2" class="btn-favorite secondary-btn">Favorite</button>
+                </article>
+                <article>
+                    <img id="img3" alt="Foto de perro aleatorio">
+                    <button id="random-dogs-btn3" class="btn-favorite secondary-btn">Favorite</button>
+                </article>
+            </div>
+            <button class="primary-btn" onclick="loadRandomDogs()">Cambiar a mis perros</button>
+        </section>
+        
+        <section>
+            <h2>Mis Perros Favoritos</h2>
+            <div id="favorite-dogs" class="favorite-dogs">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a class="developed-by" href="https://github.com/tibecvp" target="_blank">
+            <span>
+                Developed by 
+            </span>
+            <b>tibecvp</b>
+        </a>
+    </footer>
 
     <script src="./main.js"></script>
 </body>
