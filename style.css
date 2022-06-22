@@ -31,7 +31,7 @@ header {
 }
 
 main {
-    min-height: calc(100vh - 85px - 76px);
+    min-height: calc(100vh - 104px - 80px);
     padding: 0 40px;
     max-width: 1400px;
     margin: 0 auto;
@@ -79,15 +79,21 @@ section {
 
 .random-dogs, .favorite-dogs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    gap: 24px;
 }
 
 .random-dogs article, .favorite-dogs article {
-    width: 30%;
+    min-width: 200;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.favorite-dogs article {
+    width: 108px;
 }
 
 .random-dogs article .btn-favorite, .favorite-dogs article button {
@@ -97,13 +103,13 @@ section {
 
 body img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     border-radius: 8px;
     object-fit: cover;
 }
 
 .primary-btn {
-    width: 50%;
+    width: 100%;
     max-width: 600px;
     padding: 16px 36px;
     border: 0;
