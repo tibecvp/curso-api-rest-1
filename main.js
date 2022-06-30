@@ -1,9 +1,16 @@
 const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=3&api-key=18ba8935-ddf0-4d43-b8f8-97eabe082bac";
 const API_URL_FAVORITES = "https://api.thedogapi.com/v1/favourites";
 const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
+const API_URL_UPLOAD = "https://api.thedogapi.com/v1/images/upload";
+const API_KEY = "18ba8935-ddf0-4d43-b8f8-97eabe082bac";
 
 const spanError = document.getElementById('error');
 const errorContainer = document.getElementById('error-container');
+const dropZone = document.getElementById('drop-zone');
+const dropZoneImage = document.getElementById('preview-image');
+const dropZoneIcon = document.getElementById('drop-zone-icon');
+const dropZoneText = document.getElementById('drop-zone-text');
+const fileName = document.getElementById('file-name');
 
 async function loadRandomDogs() {
     const res = await fetch(API_URL_RANDOM);
@@ -77,9 +84,9 @@ function closeError() {
 async function saveFavoriteDog(id) {
     const res = await fetch(API_URL_FAVORITES, {
         method: 'POST',
-        headers: { 
+        headers: {
             'Content-type': 'application/json',
-            "x-api-key": "18ba8935-ddf0-4d43-b8f8-97eabe082bac" 
+            "x-api-key": "18ba8935-ddf0-4d43-b8f8-97eabe082bac"
         },
         body: JSON.stringify({
             image_id: id
@@ -104,7 +111,7 @@ async function deleteFavoriteDog(id) {
         headers: { "x-api-key": "18ba8935-ddf0-4d43-b8f8-97eabe082bac" }
     });
     const data = await res.json();
-    
+
     if (res.status !== 200) {
         spanError.innerHTML = "FAVORITE | Hubo un error: " + res.status + " - " + data.message;
         errorContainer.style.display = "flex";
@@ -112,4 +119,89 @@ async function deleteFavoriteDog(id) {
         console.log('Mi perro se eliminó de favoritos!');
         loadFavoriteDogs();
     }
+}
+
+/************** UPLOAD IMAGE WITH DROP ZONE */
+
+document.getElementById('add-image-input').addEventListener('change', (event) => {
+    window.selectedFile = event.target.files[0];
+    // document.getElementById('file_name').innerHTML = window.selectedFile.name;
+        fileName.innerHTML = window.selectedFile.name;
+        fileName.style.display = 'inline-block';
+
+        loadImagePreview(window.selectedFile);
+});
+
+document.getElementById('upload-image-btn').addEventListener('click', (event) => {
+    if (window.selectedFile !== undefined) {
+        uploadFile(window.selectedFile);
+    } else {
+        fileName.innerHTML = "*No file has been selected.";
+        fileName.style.color = "crimson";
+        fileName.style.display = "block";
+    }
+});
+
+if (window.FileList && window.File) {
+    dropZone.addEventListener('dragover', event => {
+        event.stopPropagation();
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+    });
+
+    dropZone.addEventListener('drop', event => {
+        event.stopPropagation();
+        event.preventDefault();
+        const files = event.dataTransfer.files;
+        window.selectedFile = files[0];
+        fileName.innerHTML = window.selectedFile.name;
+        fileName.style.display = 'inline-block';
+
+        loadImagePreview(window.selectedFile);
+    });
+}
+
+function loadImagePreview(file) {
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        dropZoneIcon.style.display = "none";
+        dropZoneText.style.display = "none";
+        dropZoneImage.src = reader.result;
+        dropZoneImage.style.display = 'block';
+    }
+}
+
+async function uploadFile(file) {
+    var formData = new FormData();
+    formData.append('file', file);
+
+    const res = await fetch(API_URL_UPLOAD, {
+        method: 'POST',
+        headers: {
+            "x-api-key": API_KEY
+        },
+        body: formData
+    });
+
+    const data = await res.json();
+
+    if (res.status < 200 && res.status > 300) {
+        spanError.innerHTML = "FAVORITE | Hubo un error: " + res.status + " - " + data.message;
+        errorContainer.style.display = "flex";
+    } else {
+        console.log('My doggys picture was uploaded!');
+        saveFavoriteDog(data.id);
+        fileName.innerHTML = 'My doggy`s picture was uploaded!';
+        fileName.style.color = "var(--light-blue)";
+        window.selectedFile = undefined;
+        resetDropZone();
+    }
+}
+
+function resetDropZone() {
+    dropZoneImage.style.display = "none";
+    dropZoneIcon.style.display = "flex";
+    dropZoneText.style.display = "inline-block";
 }

@@ -77,6 +77,82 @@ section {
     margin-top: 20px;
 }
 
+#uploadingForm {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+}
+
+.drop-zone-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#drop-zone {
+    width: 200px;
+    height: 200px;
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#drop-zone-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1rem;
+    background-color: white;
+    color: var(--grey);
+    border-radius: 50%;
+}
+
+#drop-zone-label {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#drop-zone-text {
+    padding: 0 30px;
+}
+
+#add-image-input {
+    opacity: 0;
+    height: 0;
+}
+
+#preview-image {
+    display: none;
+}
+
+#file-name {
+    display: none;
+    font-size: 1.6rem;
+}
+
+#upload-image-btn {
+    margin-top: 12px;
+    width: 200px;
+    padding: 12px;
+}
+
 .random-dogs, .favorite-dogs {
     display: flex;
     flex-wrap: wrap;
@@ -96,9 +172,8 @@ section {
     width: 108px;
 }
 
-.random-dogs article .btn-favorite, .favorite-dogs article button {
+.random-dogs article .btn-favorite{
     align-self: flex-end;
-    cursor: pointer;
 }
 
 body img {
@@ -106,6 +181,10 @@ body img {
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     object-fit: cover;
+}
+
+button {
+    cursor: pointer;
 }
 
 .primary-btn {
@@ -117,7 +196,6 @@ body img {
     color: var(--darker-blue);
     font-size: 2rem;
     border-radius: 6px;
-    cursor: pointer;
 }
 
 .secondary-btn {
@@ -127,6 +205,10 @@ body img {
     border-radius: 4px;
     color: var(--light-blue);
     background-color: var(--dark-blue);
+}
+
+#upload-image-btn {
+    font-size: 1.8rem;
 }
 
 footer {

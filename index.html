@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title>My Doggies App</title>
 </head>
+
 <body>
     <header>
         <h1>My Doggies App</h1>
@@ -17,6 +19,29 @@
             <span id="error"></span>
             <button class="error-btn" onclick="closeError()">X</button>
         </div>
+
+        <section id="uploadingDog">
+            <h2>Upload your doggy's picture</h2>
+            <div class="drop-zone-container">
+                <div id="drop-zone">
+                    <label id="drop-zone-label" for="add-image-input">
+                        <p id="drop-zone-icon">
+                            +
+                        </p>
+                        <p id="drop-zone-text">
+                            Drag & drop an image here.
+                        </p>
+                        <img id="preview-image" src="" alt="">
+                    </label>
+                    <input type="file" id="add-image-input" accept=".jpg, .png">
+                </div>
+                <p id="file-name"></p>
+                <button id="upload-image-btn" class="secondary-btn">
+                    Upload picture
+                </button>
+            </div>
+        </section>
+
         <section>
             <h2>My Random Doggies</h2>
             <div class="random-dogs">
@@ -35,7 +60,7 @@
             </div>
             <button class="primary-btn" onclick="loadRandomDogs()">Show me other Doggies</button>
         </section>
-        
+
         <section>
             <h2>My Favorite Doggies</h2>
             <div id="favorite-dogs" class="favorite-dogs">
@@ -45,7 +70,7 @@
     <footer>
         <a class="developed-by" href="https://github.com/tibecvp" target="_blank">
             <span>
-                Developed by 
+                Developed by
             </span>
             <b>tibecvp</b>
         </a>
@@ -53,4 +78,5 @@
 
     <script src="./main.js"></script>
 </body>
+
 </html>
